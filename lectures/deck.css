@@ -1,0 +1,176 @@
+/* Θέμα για τις διαφάνειες των μαθημάτων (reveal.js) – Όμιλος Μπριτζ Ηρακλείου */
+:root {
+  --teal: #1a8e9c;
+  --teal-dark: #137684;
+  --purple: #8e5fa0;
+  --red: #c62828;
+  --orange: #fc9547;
+  --ink: #2f3437;
+  --band: #d7ecf3;
+  --felt: #0f5e3a;
+  --r-background-color: #fff;
+  --r-main-font: Lato, "Helvetica Neue", Arial, system-ui, sans-serif;
+  --r-main-font-size: 32px;
+  --r-main-color: var(--ink);
+  --r-heading-font: Montserrat, "Helvetica Neue", Arial, system-ui, sans-serif;
+  --r-heading-color: var(--teal-dark);
+  --r-heading-text-transform: none;
+  --r-heading-letter-spacing: 0;
+  --r-link-color: var(--teal-dark);
+}
+
+html, body { background: #fff; }
+.reveal { font-family: var(--r-main-font); font-size: var(--r-main-font-size); font-weight: 400; color: var(--ink); }
+.reveal .slides { text-align: left; }
+.reveal .slides section { height: 100%; box-sizing: border-box; padding: 0 28px; }
+.reveal h1, .reveal h2, .reveal h3 { font-family: var(--r-heading-font); color: var(--teal-dark); text-transform: none; margin: 0 0 .5em; line-height: 1.2; }
+.reveal h1 { font-size: 2.3em; }
+.reveal h2 { font-size: 1.55em; }
+.reveal h3 { font-size: 1.1em; }
+.reveal p, .reveal li { line-height: 1.45; }
+.reveal p { margin: 0 0 .6em; }
+.reveal ul, .reveal ol { margin: 0 0 .5em 1.1em; display: block; }
+.reveal li { margin: .32em 0; }
+.reveal strong { color: var(--teal-dark); }
+.reveal a { text-decoration: underline; }
+.reveal section img { max-width: 100%; }
+.reveal .progress { color: var(--teal); }
+.reveal .controls { color: var(--teal-dark); }
+.reveal .slide-number { background: transparent; color: #777; font-size: 16px; right: 18px; bottom: 12px; }
+
+/* μικρός τίτλος ενότητας πάνω από κάθε διαφάνεια */
+.kicker { font: 700 17px/1 var(--r-heading-font); text-transform: uppercase; letter-spacing: .08em; color: var(--purple); margin: 18px 0 14px; }
+
+/* δύο στήλες */
+.cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 36px; align-items: start; }
+.cols.even { grid-template-columns: 1fr 1fr; }
+.cols > div > *:last-child { margin-bottom: 0; }
+
+/* πλαίσιο παραδείγματος */
+.example { margin: 18px 0 0; padding: 14px 20px; background: #f1f7f8; border-left: 6px solid var(--teal); border-radius: 0 10px 10px 0; font-size: .86em; }
+.example::before { content: "Παράδειγμα"; display: block; font: 700 14px/1 var(--r-heading-font); text-transform: uppercase; letter-spacing: .08em; color: var(--teal-dark); margin-bottom: 6px; }
+.example p { margin: 0 0 .3em; }
+.example p:last-child { margin-bottom: 0; }
+.note { font-size: .74em; color: #5c6469; }
+.big { font-size: 1.25em; }
+.center { text-align: center; }
+.red { color: var(--red); }
+.rs { color: var(--red); }
+.hl { background: #fff2cc; border-radius: 4px; padding: 0 6px; }
+
+/* χαρτιά */
+.pc { display: inline-flex; align-items: center; justify-content: center; min-width: 62px; height: 86px; padding: 0 8px; margin: 3px; background: #fff; color: #111; border: 2px solid #b5bec3; border-radius: 9px; font: 700 30px/1 var(--r-main-font); box-shadow: 0 2px 5px rgba(0,0,0,.22); vertical-align: middle; }
+.pc.red { color: var(--red); }
+.pc.sm { min-width: 46px; height: 62px; font-size: 22px; margin: 2px; padding: 0 4px; border-width: 1.5px; border-radius: 7px; }
+.pc.xs { min-width: 36px; height: 50px; font-size: 18px; margin: 2px 1px; padding: 0 2px; border-width: 1.5px; border-radius: 6px; }
+.pc.back { background: repeating-linear-gradient(45deg, #1a5f94 0 6px, #2a77b4 6px 12px); border-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.3); min-width: 46px; }
+.pc.on { outline: 4px solid var(--orange); outline-offset: 2px; }
+.pc.dim { opacity: .35; }
+
+/* χέρι ανά χρώμα */
+.hand { display: grid; grid-template-columns: 56px 1fr; gap: 4px 8px; align-items: center; font-size: 30px; }
+.hand .suit { font-size: 46px; text-align: center; line-height: 1; }
+.hand .suit.red { color: var(--red); }
+
+/* τα 4 χρώματα */
+.suits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin: 14px 0; }
+.suit-tile { text-align: center; padding: 16px 8px; border: 2px solid #d3dce0; border-radius: 12px; background: #fafcfc; }
+.suit-tile .sym { display: block; font-size: 84px; line-height: 1; }
+.suit-tile .sym.red { color: var(--red); }
+.suit-tile .nm { display: block; font: 700 26px/1.2 var(--r-heading-font); margin-top: 6px; }
+.suit-tile .en { display: block; font-size: 20px; color: #6a7378; }
+.suit-tile.major { border-color: var(--teal); background: #eef7f9; }
+.suit-tile.minor { border-color: var(--purple); background: #f6f0f8; }
+
+/* ροή βημάτων */
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 16px 0 6px; counter-reset: step; }
+.flow > div { position: relative; padding: 46px 12px 12px; background: #f1f7f8; border: 2px solid #cfe0e4; border-radius: 12px; font-size: .68em; line-height: 1.35; text-align: center; }
+.flow > div::before { counter-increment: step; content: counter(step); position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; border-radius: 50%; background: var(--teal-dark); color: #fff; font: 700 17px/30px var(--r-heading-font); }
+.flow > div strong { display: block; margin-bottom: 4px; }
+.flow > div.accent { background: #fff7e6; border-color: #f0c36d; }
+
+/* πυξίδα με τους ρόλους */
+.compass { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-areas: ". n ." "w c e" ". s ."; gap: 10px; max-width: 520px; margin: 0 auto; padding: 16px; background: var(--felt); border-radius: 16px; color: #fff; }
+.compass .seat { text-align: center; padding: 10px 6px; border-radius: 10px; font-size: 24px; line-height: 1.2; }
+.compass .seat b { display: block; font-size: 28px; }
+.compass .seat small { display: block; font-size: 17px; opacity: .92; margin-top: 3px; }
+.compass .n { grid-area: n; } .compass .e { grid-area: e; } .compass .s { grid-area: s; } .compass .w { grid-area: w; }
+.compass .c { grid-area: c; align-self: center; text-align: center; font-size: 15px; opacity: .65; letter-spacing: .08em; text-transform: uppercase; }
+.compass .ax1 { background: rgba(26, 142, 156, .55); }
+.compass .ax2 { background: rgba(142, 95, 160, .6); }
+.compass .tag { display: inline-block; margin-top: 4px; padding: 2px 10px; background: #fff; color: var(--teal-dark); border-radius: 999px; font-size: 16px; font-weight: 700; }
+.compass .tag.def { color: var(--purple); }
+
+/* λεβέ στο τραπέζι */
+.trick { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-areas: ". n ." "w c e" ". s ."; gap: 6px 10px; max-width: 560px; margin: 0 auto; padding: 16px 20px; background: var(--felt); border-radius: 16px; color: #fff; }
+.trick .seat { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 20px; }
+.trick .seat b { font-size: 21px; }
+.trick .seat i { font-style: normal; font-size: 15px; opacity: .85; }
+.trick .seat .pc { margin: 2px 0; }
+.trick .n { grid-area: n; } .trick .e { grid-area: e; } .trick .s { grid-area: s; } .trick .w { grid-area: w; }
+.trick .c { grid-area: c; align-self: center; justify-self: center; font-size: 15px; opacity: .6; letter-spacing: .1em; text-transform: uppercase; }
+.trump-pill { display: inline-block; padding: 5px 16px; background: var(--band); color: var(--ink); border-radius: 999px; font: 700 .8em var(--r-heading-font); margin: 0 0 12px; }
+.answer { margin-top: 14px; padding: 12px 18px; background: #e7f5ec; border-left: 6px solid #1b7f3b; border-radius: 0 10px 10px 0; font-size: .82em; }
+.answer b { color: #1b7f3b; }
+
+/* πίνακας αγοράς */
+.auction { border-collapse: collapse; margin: 6px 0 8px; font-size: 26px; width: 100%; }
+.reveal .auction th, .reveal .auction td { border: 2px solid #cfd8dc; padding: 6px 8px; text-align: center; }
+.reveal .auction th { background: var(--band); font: 700 20px var(--r-heading-font); color: var(--ink); }
+.reveal .auction td { font-weight: 700; height: 46px; }
+.reveal .auction td.end { background: #fff2cc; }
+
+/* κουτί αγορών */
+.bidbox { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 6px; }
+.bid { display: inline-flex; align-items: center; justify-content: center; min-width: 96px; height: 62px; padding: 0 12px; background: #fff; border: 2px solid #9fb2b8; border-radius: 8px; font: 700 28px var(--r-main-font); box-shadow: 0 2px 4px rgba(0,0,0,.2); }
+.bid.pass { background: #3aa0ae; color: #fff; border-color: #3aa0ae; font-size: 22px; }
+
+/* ονέρ / λιμά */
+.rank-row { margin: 8px 0 0; line-height: 1; }
+.brace { display: flex; margin: 0 3px; font: 700 21px var(--r-heading-font); }
+.brace > div { text-align: center; padding: 6px 0; border-top: 6px solid; }
+.brace .honors { flex: 5; border-color: var(--teal); color: var(--teal-dark); }
+.brace .low { flex: 8; border-color: #aab4b8; color: #5c6469; margin-left: 8px; }
+
+/* όρθια / οριζόντια φύλλα */
+.pile { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-areas: ". n ." "w c e" ". s ."; gap: 6px 22px; max-width: 460px; margin: 0 auto; align-items: center; justify-items: center; padding: 16px; background: var(--felt); border-radius: 16px; color: #fff; min-height: 330px; }
+.pile .n { grid-area: n; } .pile .e { grid-area: e; } .pile .s { grid-area: s; } .pile .w { grid-area: w; }
+.pile .c { grid-area: c; font-size: 15px; opacity: .7; text-align: center; }
+.pile .pc.back { width: 54px; height: 76px; }
+.pile .pc.back.flat { width: 76px; height: 54px; }
+
+.recap li { margin: .28em 0; }
+.btnlink { display: inline-block; margin: 8px 12px 8px 0; padding: 14px 28px; background: var(--teal-dark); color: #fff !important; text-decoration: none !important; border-radius: 8px; font-weight: 700; font-size: .85em; }
+.btnlink.alt { background: transparent; color: var(--teal-dark) !important; border: 2px solid var(--teal-dark); }
+
+/* σύνδεσμος επιστροφής και οδηγίες πάνω στη σελίδα */
+.deck-back { position: fixed; top: 10px; left: 14px; z-index: 30; font: 600 15px/1 var(--r-main-font); background: rgba(255, 255, 255, .92); border: 1px solid #cfd8dc; border-radius: 999px; padding: 8px 14px; color: var(--teal-dark); text-decoration: none; }
+.deck-back:hover { background: #fff; border-color: var(--teal); }
+@media print { .deck-back { display: none; } }
+
+/* ομάδες φύλλων: ονέρ / λιμά */
+.rank-groups { display: flex; gap: 28px; margin: 6px 0 4px; }
+.rank-groups .grp { text-align: center; border-top: 6px solid; padding-top: 10px; font: 700 22px/1.2 var(--r-heading-font); }
+.rank-groups .grp.honors { border-color: var(--teal); color: var(--teal-dark); }
+.rank-groups .grp.low { border-color: #aab4b8; color: #5c6469; }
+.rank-groups .grp span.cards { display: block; margin-bottom: 8px; }
+
+/* ---------- κατακόρυφη οθόνη (κινητό): ψηλή διάταξη 720×1280 ---------- */
+.portrait .reveal .slides section { padding: 0 20px; }
+.portrait .cols, .portrait .cols.even { grid-template-columns: 1fr; gap: 20px; }
+.portrait .reveal h1 { font-size: 1.9em; }
+.portrait .reveal h2 { font-size: 1.45em; }
+.portrait .suits { grid-template-columns: repeat(2, 1fr); }
+.portrait .flow { grid-template-columns: 1fr 1fr; }
+.portrait .flow > div:last-child { grid-column: 1 / -1; }
+.portrait .suit-tile .sym { font-size: 64px; }
+.portrait .pc { min-width: 56px; height: 78px; font-size: 27px; }
+.portrait .pc.sm { min-width: 40px; height: 56px; font-size: 20px; }
+.portrait .pc.xs { min-width: 34px; height: 48px; font-size: 17px; }
+.portrait .rank-groups { flex-direction: column; gap: 14px; }
+.portrait .hand { font-size: 26px; }
+.portrait .compass .seat b { font-size: 24px; }
+.portrait .compass .seat { font-size: 20px; }
+.portrait .deck-back { font-size: 13px; padding: 6px 12px; top: 6px; left: 8px; }
+.portrait .bid { min-width: 78px; height: 54px; font-size: 24px; }
+.portrait .btnlink { display: block; margin: 12px 0; text-align: center; }
