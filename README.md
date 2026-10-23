@@ -8,7 +8,7 @@ Learning material of the Heraklion Bridge Club (Όμιλος Μπριτζ Ηρα
 |---|---|---|
 | `/` | home page with a button per section | `index.html` |
 | `/lectures/` | lecture slides ([reveal.js](https://revealjs.com) 5.1.0, stored in `lectures/vendor/reveal/`) | `lectures/index.html`, `lectures/mathima-N/index.html`, `lectures/deck.css`, `lectures/deck.js` |
-| `/quiz/` | one quiz per lesson (1, 2, 5, 6) | `quiz/index.html`, `quiz/mathima-N/{index.html,questions.js}` |
+| `/quiz/` | one quiz per lesson (1, 2 are listed; 5 and 6 exist but are hidden for now: unlinked and `noindex`) | `quiz/index.html`, `quiz/mathima-N/{index.html,questions.js}` |
 
 Shared parts: `assets/site.js` (top menu and footer – **edit the `menu` and `footer` blocks at the top**), `assets/style.css`, `assets/quiz.js` (the quiz engine).
 

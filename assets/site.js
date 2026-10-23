@@ -17,9 +17,7 @@ const SITE = {
     { label: 'Κουίζ', children: [
       { label: 'Όλα τα κουίζ', href: 'quiz/' },
       { label: 'Κουίζ μαθήματος 1', href: 'quiz/mathima-1/' },
-      { label: 'Κουίζ μαθήματος 2', href: 'quiz/mathima-2/' },
-      { label: 'Κουίζ μαθήματος 5', href: 'quiz/mathima-5/' },
-      { label: 'Κουίζ μαθήματος 6', href: 'quiz/mathima-6/' }
+      { label: 'Κουίζ μαθήματος 2', href: 'quiz/mathima-2/' }
     ]},
     { label: 'Μαθήματα στον Όμιλο', href: 'https://www.heraklion-bridge.gr/lessons/' },
     { label: '← Όμιλος Μπριτζ Ηρακλείου', href: 'https://www.heraklion-bridge.gr/' }
