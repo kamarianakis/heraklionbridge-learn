@@ -13,14 +13,9 @@ const SITE = {
   /* ----- Top menu ----- */
   menu: [
     { label: 'Αρχική', href: '' },
-    { label: 'Διαφάνειες μαθημάτων', href: 'lectures/' },
-    { label: 'Κουίζ', children: [
-      { label: 'Όλα τα κουίζ', href: 'quiz/' },
-      { label: 'Κουίζ μαθήματος 1', href: 'quiz/mathima-1/' },
-      { label: 'Κουίζ μαθήματος 2', href: 'quiz/mathima-2/' }
-    ]},
-    { label: 'Μαθήματα στον Όμιλο', href: 'https://www.heraklion-bridge.gr/lessons/' },
-    { label: '← Όμιλος Μπριτζ Ηρακλείου', href: 'https://www.heraklion-bridge.gr/' }
+    { label: 'Για μαθητές', href: 'mathites/' },
+    { label: 'Για παίκτες', href: 'paiktes/' },
+    { label: 'Σελίδα Ομίλου', href: 'https://www.heraklion-bridge.gr/' }
   ],
 
   /* ----- Footer ----- */

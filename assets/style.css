@@ -215,3 +215,8 @@ body:has(#quiz) .to-top { display: none !important; }
   .site-footer .cols { grid-template-columns: 1fr; padding: 20px; }
   .site-footer .cols > div { padding: 20px 0; }
 }
+
+/* ---------- players area: tiles that are not ready yet ---------- */
+.quiz-tile.soon { opacity: .62; box-shadow: none; cursor: default; background: #f7f9fa; }
+.quiz-tile.soon:hover { border-color: #dde3e6; box-shadow: none; }
+.quiz-tile.soon .tile-go { color: #777; }

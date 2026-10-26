@@ -209,6 +209,22 @@ html, body { background: #fff; }
 /* άδεια θέση στη λεβέ (δεν έχει παιχτεί ακόμα) */
 .pc.ghost { background: transparent; border: 2px dashed rgba(255, 255, 255, .55); box-shadow: none; color: rgba(255, 255, 255, .85); font-size: 22px; }
 
+/* χρωματικός κώδικας των μπόνους (αγοραστική κλίμακα) */
+.reveal .ladder td.g { background: #d9f56a; border-color: #a9c92e; }
+.reveal .ladder td.b { background: #86d3f7; border-color: #3aa3d4; }
+.reveal .ladder td.p { background: #ffc9cf; border-color: #e19aa3; }
+.reveal .ladder td.y { background: #ffee38; border-color: #d4bd00; }
+.bonus { display: grid; gap: 10px; margin: 12px 0 6px; }
+.bonus > div { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 10px 20px; border: 2px solid; border-radius: 10px; font-size: .8em; }
+.bonus b { font-family: var(--r-heading-font); }
+.bonus span { font: 700 1.1em var(--r-heading-font); }
+.bonus .g { background: #ecfab0; border-color: #a9c92e; }
+.bonus .b { background: #bfe6fa; border-color: #3aa3d4; }
+.bonus .p { background: #ffe0e3; border-color: #e19aa3; }
+.bonus .y { background: #fff59a; border-color: #d4bd00; }
+.counts.four { grid-template-columns: repeat(4, 1fr); }
+.flow.three { grid-template-columns: repeat(3, 1fr); }
+
 /* ---------- κατακόρυφη οθόνη (κινητό): ψηλή διάταξη 720×1280 ---------- */
 .portrait .reveal .slides section { padding: 0 20px; }
 .portrait .cols, .portrait .cols.even { grid-template-columns: 1fr; gap: 20px; }
@@ -229,6 +245,8 @@ html, body { background: #fff; }
 .portrait .bid { min-width: 78px; height: 54px; font-size: 24px; }
 .portrait .btnlink { display: block; margin: 12px 0; text-align: center; }
 .portrait .counts, .portrait .outcomes, .portrait .rules { grid-template-columns: 1fr; }
+.portrait .counts.four { grid-template-columns: 1fr 1fr; }
+.portrait .flow.three { grid-template-columns: 1fr; }
 .portrait .counts b { font-size: 52px; }
 .portrait .ladder th, .portrait .ladder td { min-width: 0; height: 44px; font-size: 22px; }
 .portrait .cmp-row { flex-wrap: wrap; }

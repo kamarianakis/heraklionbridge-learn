@@ -10,23 +10,37 @@ The site is a plain static site (no build step). Everything is in Greek. A lesso
 
 | Artifact | Path | Reference to copy the style from |
 |---|---|---|
-| Slides | `lectures/mathima-N/index.html` | `lectures/mathima-1/` and `lectures/mathima-2/` |
-| Quiz | `quiz/mathima-N/{index.html,questions.js}` | `quiz/mathima-2/` (header comment of `quiz/mathima-1/questions.js` documents every field) |
+| Slides | `lectures/<slug>/index.html` | `lectures/kanones-agoras/` or `lectures/epilogi-symvolaiou/` |
+| Quiz | `quiz/<slug>/{index.html,questions.js}` | `quiz/epilogi-symvolaiou/` (header comment of `quiz/mathima-1/questions.js` documents every field) |
 
 "Lecture notes" in the user's words = the slide deck. Stay consistent with the existing decks and quizzes: read at least one existing deck in full before writing a new one.
+
+## Naming: units, not lessons (request of the teacher who writes the summaries)
+
+The material must not be tied to lesson numbers, so that other instructors, other clubs and self-learners can use it as a series of *units* in any order. Therefore, **from lesson 3 on**:
+
+- Title = the topic title of the summary (e.g. «Αρχές επιλογής συμβολαίου»), never «Μάθημα N» / «Α΄ κύκλος · Μάθημα N» (title slide, `<title>`, meta, headings, tiles, quiz page, quiz note, menu).
+- **Units are numbered `01`, `02`, `03`… in teaching order** (requested by the site owner, so students can see how each unit builds on the previous one), always written as «Ενότητα NN» (never «Μάθημα»): title slide `p.big` = «Ενότητα NN · <υπότιτλος>», `<title>` = «Ενότητα NN · <τίτλος> – Διαφάνειες …», quiz `<h1>`/`<title>` = «Κουίζ NN: <τίτλος>», tile kickers «Ενότητα NN · N διαφάνειες» / «Ενότητα NN · N ερωτήσεις», `next` labels «Κουίζ NN: …», last-slide buttons short «Κουίζ NN», «← Ενότητα NN», «Ενότητα NN →» (long labels make the slide overflow), and the «Τι χρειάζεσαι από πριν» slide links to the units it needs («ενότητα 01 «…»»). URL slugs stay topic names (no numbers). The next number = the highest existing unit + 1.
+- Slug = transliterated topic, e.g. `lectures/epilogi-symvolaiou/`, `quiz/epilogi-symvolaiou/`. (The first two units were renamed from `mathima-1`/`mathima-2` to `vasika-tou-mpritz`/`kanones-agoras`; the old addresses are redirect stubs in `lectures/mathima-N/` and `quiz/mathima-N/`. Never delete them: links to them were shared. The hidden quizzes `quiz/mathima-5` and `quiz/mathima-6` still have lesson-number slugs: rename them by topic, with a redirect stub, when they are published.)
+- No «Από το προηγούμενο μάθημα» slide: use «Τι χρειάζεσαι από πριν» (the concepts needed, with a link to the unit that covers them, named by title).
+- Tile kickers on the lecture/quiz index pages: «N διαφάνειες» / «N ερωτήσεις».
+- In the last slide / quiz note link to other units by their title. Add the new unit as «Επόμενη ενότητα» to the previous deck if it logically follows.
+- **Never name the teacher (or the summary author) anywhere on the site or in the repo**: no credit lines, no names in the PDF-derived text, titles, notes, README or this skill. Say «βασίζονται σε περίληψη» only if needed, without a name. This is the teacher's explicit request. (Source PDFs stay untracked and are never committed.)
+
+The teacher forwards the links to the students and is wary of surprises: **stick strictly to the summary**. List everything you derived or added (even simple arithmetic or an extra example) in the final report, and don't explain things the summary only shows without explaining (e.g. the two values «300 ή 500» of a bonus).
 
 ## Workflow
 
 1. **Read the PDF.** Use `Read` with `pages` (it shows page images, so suit symbols and tables are visible); `pdftotext -layout` is available as a cross-check. Find the lesson number N from the title/filename (A2.pdf → N=2). The summary is the source of truth.
-2. **Check what exists:** `ls lectures quiz`, and whether `quiz/mathima-N/` exists. The user usually says whether the quiz is already there; if it is, read its `questions.js` — the deck must agree with it (same terms, same examples where sensible, same question count in the last slide).
-3. **Write the deck** `lectures/mathima-N/index.html` (see "Deck conventions"). Do not copy long passages of the summary verbatim into slides; explain, then give an example.
+2. **Check what exists:** `ls lectures quiz`, and whether `quiz/<slug>/` exists. The user usually says whether the quiz is already there; if it is, read its `questions.js` — the deck must agree with it (same terms, same examples where sensible, same question count in the last slide).
+3. **Write the deck** `lectures/<slug>/index.html` (see "Deck conventions"). Do not copy long passages of the summary verbatim into slides; explain, then give an example.
 4. **Wire it into the site** (see "Wiring").
 5. **Quiz:** only if it does not exist (see "Creating a quiz").
 6. **Verify visually** (see "Verification"), then report. Do **not** commit unless the user asks; leave the source PDF untracked unless asked.
 
 ## Deck conventions
 
-Copy the `<head>`/script skeleton of `lectures/mathima-2/index.html` (change title, descriptions, canonical/og URLs to `/lectures/mathima-N/`). Slide order:
+Copy the `<head>`/script skeleton of `lectures/kanones-agoras/index.html` (change title, descriptions, canonical/og URLs to `/lectures/<slug>/`). Slide order:
 
 1. **Title** (suit symbols, `<h1>`, "Α΄ κύκλος · Μάθημα N", club name, note about navigation).
 2. **«Τι θα δούμε»** – numbered list of the summary's sections + the example/quiz teaser box.
@@ -50,7 +64,7 @@ Text rules:
 
 - **Red suits:** wrap ♥ and ♦ in `<span class="rs">♥</span>` in running text (inside `.pc.red`/`.hand .suit.red` use `red`). ♠ ♣ stay plain.
 - **ΧΑ (no trump) must be typed with Greek letters Χ and Α**, never Latin X A. After writing, run a grep for mixed-script `XA|ΧA|XΑ`.
-- Vocabulary used on the site (keep it): εκτελεστής, μορ, αντάμ, αμυνόμενοι, άξονας, λεβέ (= μπάζα), ατού, ΧΑ, τσάκα, ονέρ / λιμά, μαζέρ / μινέρ, συμβόλαιο, δέσμευση, θήκη (ντόνα/διανομή), κουτί αγορών, πάσο, «το έβγαλε ακριβώς», «το έβγαλε με N άνω λεβέ», «μπήκε μέσα (N λεβέ κάτω)». **dealer** and **bridgemate** stay in Latin letters. Don't introduce new terminology that the summary doesn't use. Things the summary only counts but defers are **not named at all** in the lectures: the remaining bidding-box calls (X/κοντρ, XX/ρεκοντρ) and the 2 helper cards (STOP, ALERT) — only the pass is mentioned ("οι υπόλοιπες δηλώσεις και οι βοηθητικές δεν θα μας χρειαστούν για τώρα"). Likewise for anything else the user says is out of scope.
+- Vocabulary used on the site (keep it): εκτελεστής, μορ, αντάμ, αμυνόμενοι, άξονας, λεβέ (= μπάζα), ατού, ΧΑ, τσάκα, ονέρ / λιμά, μαζέρ / μινέρ, συμβόλαιο, δέσμευση, θήκη (ντόνα/διανομή), κουτί αγορών, πάσο, «το έβγαλε ακριβώς», «το έβγαλε με N άνω λεβέ», «μπήκε μέσα (N λεβέ κάτω)». **dealer** and **bridgemate** stay in Latin letters. **Grammar (the owner insists):** η μανς (η χαμηλότερη μανς), η λεβέ / οι λεβέ, η αντάμ; bids take the article of the suit's name: η 1♥ / οι 4♥ / οι 4♠ (κούπες, πίκες: feminine), το 1♣ / τα 3♣ / τα 4♦ (σπαθιά, καρά: neuter), το 1ΧΑ / τα 3ΧΑ (ΧΑ: neuter plural). Example: «οι 4♥ είναι μανς», «τα 4♦ είναι μερικό σκορ», «Για τις 4♠…». When in doubt, write «η αγορά 4♥» or «το συμβόλαιο 4♥». Don't introduce new terminology that the summary doesn't use. Things the summary only counts but defers are **not named at all** in the lectures: the remaining bidding-box calls (X/κοντρ, XX/ρεκοντρ) and the 2 helper cards (STOP, ALERT) — only the pass is mentioned ("οι υπόλοιπες δηλώσεις και οι βοηθητικές δεν θα μας χρειαστούν για τώρα"). Likewise for anything else the user says is out of scope.
 - Address the learner informally (singular «δες», «δοκίμασε»), as in lecture 1/2.
 - Table conventions: clockwise order is Β → Α → Ν → Δ → Β, so the player **to the left of** X is the next one clockwise (left of Νότος = Δύση, left of Δύση = Βορράς, left of Βορράς = Ανατολή, left of Ανατολή = Νότος). Declarer's left-hand opponent makes the opening lead.
 - **Check every example for correctness** before finishing: auctions are legal (each call higher than the previous, ends with 3 passes or 4 at the start), the declarer is the first of the *axis* to bid the final denomination, tricks needed = level + 6, who wins each trick, etc. Prefer examples that don't contradict a "usually" rule of the summary (e.g. don't pick an honor-on-honor example that clashes with "second hand low" in a confusing way).
@@ -58,19 +72,28 @@ Text rules:
 
 ## Wiring (after the deck exists)
 
-- `lectures/index.html`: add a `<a class="quiz-tile" href="mathima-N/">` block (copy the existing one: kicker «Μάθημα N · <slide count> διαφάνειες», title, one-sentence description). Slide count = `grep -c "<section" lectures/mathima-N/index.html`. Keep the credit/quiz-link note at the bottom accurate.
-- `sitemap.xml`: add `https://learn.heraklion-bridge.gr/lectures/mathima-N/` after the previous lecture.
-- Previous deck (`lectures/mathima-(N-1)/index.html`), last slide: add a `btnlink alt` to `../mathima-N/` if it isn't there.
-- `README.md` already says `lectures/mathima-N/`; update it only if something structural changed.
-- Home `index.html` is generic ("Διαφάνειες μαθημάτων"); only touch it if the numbers it shows change (quiz count, see below).
+- `lectures/index.html`: add a `<a class="quiz-tile" href="<slug>/">` block (copy the existing one: kicker «<slide count> διαφάνειες», title, one-sentence description). Slide count = `grep -c "<section" lectures/<slug>/index.html`. Keep the credit/quiz-link note at the bottom accurate.
+- `sitemap.xml`: add `https://learn.heraklion-bridge.gr/lectures/<slug>/` after the previous lecture.
+- Previous deck (`lectures/<previous-slug>/index.html`), last slide: add a `btnlink alt` to `../<slug>/` if it isn't there.
+- `README.md` already says `lectures/<slug>/`; update it only if something structural changed.
+- Home `index.html` and the hub `mathites/index.html` are generic (no lecture or quiz counts) and need no change.
+- The site has two audiences: **students** (`/mathites/` hub → `/lectures/`, `/quiz/`: everything this skill produces by default) and **players** (`/paiktes/`, for people who finished the courses or play already). Material for players is organised by topic in `paiktes/<thema>/` (see "Players' material" below); do not put it in `lectures/` or `quiz/`.
 
-## Creating a quiz (only if `quiz/mathima-N/` does not exist)
+## Creating a quiz (only if `quiz/<slug>/` does not exist)
 
-1. `cp -r quiz/mathima-6 quiz/mathima-N`; in `index.html` replace every «6» / title / description / canonical / og URL / the "Δείτε και το κουίζ του μαθήματος …" link; in `questions.js` replace the title comment and questions.
+1. `cp -r quiz/epilogi-symvolaiou quiz/<slug>`; in `index.html` replace the title / description / canonical / og URL / the link to the deck and the quiz note (no lesson number, see «Naming»); in `questions.js` replace the title comment and questions.
 2. **Questions:** 18–21, Greek, 4 options, one correct. Cover each fact of the summary at least once, then add worked-example questions that reuse the board widgets: `auction`, `context`, `hand`, `fullhand`, `trump`, `trick` (documented at the top of `quiz/mathima-1/questions.js`). Write `correct: 0` as the right answer — the engine shuffles unless `shuffle: false` (use `false` whenever the options are Βορράς/Ανατολή/Νότος/Δύση or are ordered/numbered in a way that matters). `explain` always gives the reason, quoting the rule from the summary.
-3. **Chain:** set `next` in `quiz/mathima-N/questions.js` to the following existing quiz (or `null` if last) and update the previous quiz's `next` to `{ label: 'Κουίζ μαθήματος N', href: 'quiz/mathima-N/' }` (keep the numeric order of existing quizzes).
-4. **Register it:** `assets/site.js` menu (`Κουίζ μαθήματος N`), a tile in `quiz/index.html` (question count = number of questions), `sitemap.xml`. The home page tile in `index.html` is generic (no counts) and needs no change. Update the list of quizzes in `README.md`.
-5. Question count: `grep -c "^    {" quiz/mathima-N/questions.js` (each question object starts at 4-space indent) — cross-check with the number in the deck's last slide and the tiles.
+3. **Chain:** set `next` in `quiz/<slug>/questions.js` to the following existing quiz (or `null` if last) and update the previous quiz's `next` to `{ label: 'Κουίζ: <τίτλος>', href: 'quiz/<slug>/' }` (keep the order of the units).
+4. **Register it:** `assets/site.js` menu (`Κουίζ: <τίτλος>`, in the "Για μαθητές" dropdown), a tile in `quiz/index.html` (question count = number of questions), `sitemap.xml`. The home page tile in `index.html` is generic (no counts) and needs no change. Update the list of quizzes in `README.md`.
+5. Question count: `grep -c "^    {" quiz/<slug>/questions.js` (each question object starts at 4-space indent) — cross-check with the number in the deck's last slide and the tiles.
+
+## Players' material (`/paiktes/`) – only when the user says the PDF/text is for players
+
+**Current state:** on `main` every button of `/paiktes/` is a greyed-out «Σύντομα» placeholder (the top menu has no submenus). The finished Συμβάσεις (20 pages) and Υλικό pages, with their CSS, are kept on the git branch `paiktes-content`; ask before publishing them. Plan: the players' area has four sections: **Διανομές** (deals), **Συμβάσεις** (conventions, split Απλές / Προχωρημένες), **Κουίζ**, **Υλικό** (links and reading). Folders: `paiktes/dianomes/`, `paiktes/symvaseis/<slug>/`, `paiktes/kouiz/`, `paiktes/yliko/`. Not-yet-built sections are `quiz-tile soon` placeholders in `paiktes/index.html`: when you build one, turn its tile into a link, add it to the "Για παίκτες" menu in `assets/site.js` and to `sitemap.xml`, and mention it in `README.md`.
+
+- **Conventions:** plain HTML pages (copy `paiktes/symvaseis/stayman/`), bidding trees as `table.seq` (see README), title with a `level-tag`, crumbs link back to the list, and an entry in the right list of `paiktes/symvaseis/index.html`. Keep the system's own abbreviations (GF, SI, SGL, to play, sign-off; legend on that page) and write ΧΑ in Greek letters. Translate from the user's source faithfully; do not "fix" bridge content that looks odd, list it for the user instead. Players' pages may use κοντρ/ρεκοντρ (the "leave out X/XX" rule above is only for the first-cycle lectures).
+- **Slides/quizzes for players:** same conventions as the student ones, in `paiktes/<section>/<topic>/` (fix the relative paths, `../../../lectures/deck.css`, `../../../assets/…`). Don't use "Α΄ κύκλος · Μάθημα N" on the title slide; use the topic name and a level label (Μεσαίο / Προχωρημένο) if the user gives one. Skip the "Από το προηγούμενο μάθημα" slide unless the topic clearly builds on a lesson. Assume the learner knows the first-cycle vocabulary.
+- **Inspiration from other sites** (e.g. the user's friend's blog bridgeaddiction.blogspot.com): rewrite in your own words, never copy text, and credit/link the source on the page.
 
 ## Verification
 
@@ -78,7 +101,7 @@ Text rules:
 cd <repo> && python3 -m http.server 8123   # run in background
 ```
 
-Open `http://localhost:8123/lectures/mathima-N/` in the Browser pane, resize to 1280×720, then for each slide run in the page console:
+Open `http://localhost:8123/lectures/<slug>/` in the Browser pane, resize to 1280×720, then for each slide run in the page console:
 
 ```js
 Reveal.configure({transition:'none'}); Reveal.slide(i, 0, 99)   // 99 = show all fragments
@@ -90,7 +113,7 @@ wait ~1 s (screenshots otherwise show the previous slide), take a screenshot at 
 (async()=>{const chk=s=>Math.max(...[...s.children].map(c=>c.offsetTop+c.offsetHeight));const o=[];for(let i=0;i<Reveal.getTotalSlides();i++){Reveal.slide(i,0,99);await new Promise(r=>setTimeout(r,200));o.push((i+1)+':'+chk(Reveal.getCurrentSlide()))}return o.join(' ')})()
 ```
 
-Then `resize_window` preset `mobile`, reload, and spot-check 2–3 slides with grids (tables, `.rules`, `.outcomes`). Reset the viewport with preset `desktop` and stop the server when done. For a quiz, open `quiz/mathima-N/` and click through a few questions incl. the board widgets.
+Then `resize_window` preset `mobile`, reload, and spot-check 2–3 slides with grids (tables, `.rules`, `.outcomes`). Reset the viewport with preset `desktop` and stop the server when done. For a quiz, open `quiz/<slug>/` and click through a few questions incl. the board widgets.
 
 ## Final report to the user
 
