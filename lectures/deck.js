@@ -24,6 +24,21 @@
     previewLinks: false
   });
 
+  // ανώνυμα στατιστικά: φόρτωση και συμβάν όταν κάποιος φτάσει στην τελευταία διαφάνεια
+  var me = document.currentScript;
+  if (me) {
+    var st = document.createElement('script');
+    st.src = new URL('../assets/stats.js', me.src).href;
+    document.head.appendChild(st);
+  }
+  var reachedEnd = false;
+  Reveal.on('slidechanged', function () {
+    if (reachedEnd || !Reveal.isLastSlide()) return;
+    reachedEnd = true;
+    var slug = location.pathname.replace(/\/$/, '').split('/').pop();
+    if (window.trackEvent) window.trackEvent('deck-end/' + slug);
+  });
+
   window.addEventListener('resize', function () {
     var next = layout();
     if (next.width !== size.width) { size = next; Reveal.configure(next); }

@@ -64,13 +64,19 @@
 
   function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
 
+  /* ---------- ανώνυμα στατιστικά (βλ. assets/stats.js) ---------- */
+  var SLUG = location.pathname.replace(/\/$/, '').split('/').pop();
+  function track(name) { if (window.trackEvent) window.trackEvent(name + '/' + SLUG); }
+
   /* ---------- state ---------- */
   function start() {
     state = {
       mode: 'quiz',
       cur: 0,
       items: QUIZ.questions.map(prepare),
-      answers: QUIZ.questions.map(function () { return null; })
+      answers: QUIZ.questions.map(function () { return null; }),
+      started: false,
+      reported: false
     };
     render();
   }
@@ -207,6 +213,12 @@
   }
 
   function finish() {
+    if (!state.reported) {
+      state.reported = true;
+      var c = counts();
+      track('quiz-finish');
+      if (window.trackEvent) window.trackEvent('quiz-score/' + SLUG + '/' + c.correct + '-of-' + state.items.length);
+    }
     state.mode = 'result';
     render('heading');
     root.scrollIntoView({ block: 'start' });
@@ -243,6 +255,7 @@
       } else {
         b.addEventListener('click', function () {
           state.answers[i] = orig;
+          if (!state.started) { state.started = true; track('quiz-start'); }
           render('next');
         });
       }

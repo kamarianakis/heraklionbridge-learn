@@ -41,3 +41,7 @@ then open http://localhost:8000.
 ## Credits
 
 Quiz questions and slides are based on lesson summaries of the first cycle. reveal.js is MIT-licensed (`lectures/vendor/reveal/LICENSE`).
+
+## Statistics
+
+Anonymous, cookie-free usage statistics via [GoatCounter](https://www.goatcounter.com): dashboard at https://heraklionbridge.goatcounter.com (log in with the club's account). `assets/stats.js` injects the script; it is loaded by `assets/site.js` (all normal pages) and `lectures/deck.js` (slides). Page views give visits per page. Custom events (paths in the dashboard): `quiz-start/<unit>` (first answer given), `quiz-finish/<unit>` (result screen reached), `quiz-score/<unit>/<correct>-of-<total>` (score histogram) and `deck-end/<unit>` (last slide reached). Localhost is ignored by GoatCounter. To remove the statistics, delete `assets/stats.js` and the `loadStats` call in `site.js` / the block in `deck.js`.

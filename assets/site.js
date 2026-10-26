@@ -132,7 +132,7 @@ const SITE = {
         '</ul></div>' +
         '<div>' + svg('phone', 'ico-big') + phones + '</div>' +
       '</div>' +
-      '<div class="copy">© ' + new Date().getFullYear() + ' Όμιλος Μπριτζ Ηρακλείου (ΟΜΗ) · <a href="https://www.heraklion-bridge.gr/">www.heraklion-bridge.gr</a></div>';
+      '<div class="copy">© ' + new Date().getFullYear() + ' Όμιλος Μπριτζ Ηρακλείου (ΟΜΗ) · <a href="https://www.heraklion-bridge.gr/">www.heraklion-bridge.gr</a><br>Ανώνυμα στατιστικά χρήσης, χωρίς cookies.</div>';
     document.body.appendChild(footer);
   }
 
@@ -150,7 +150,14 @@ const SITE = {
     toggle();
   }
 
+  function loadStats() {
+    var st = document.createElement('script');
+    st.src = ROOT + 'assets/stats.js';
+    document.head.appendChild(st);
+  }
+
   function init() {
+    loadStats();
     buildHeader();
     buildFooter();
     buildToTop();
